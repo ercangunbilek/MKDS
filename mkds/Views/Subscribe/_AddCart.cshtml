@@ -1,0 +1,13 @@
+﻿<div class="dropdown dropdown-options">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="icon_plus_alt2"></i></a>
+    <div class="dropdown-menu">
+        <h5>Number of services</h5>
+        <label>
+            <input type="number" value="1" min="1" max="20" name="product_quantity" />
+        </label>
+        <input name="product_price" value="@ViewData["Price"]" type="hidden" />
+        <input name="product_id" value="@ViewData["Day"]" type="hidden" />
+        <button class="sc-add-to-cart">Add to cart</button>
+    </div>
+</div>
+@*value="@ViewData["Day"]"*@

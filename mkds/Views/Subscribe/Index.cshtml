@@ -1,0 +1,107 @@
+﻿
+@model dynamic
+@{
+    ViewBag.Title = "Subscription";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using mkds.Controllers
+@using mkds.Models
+
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li>Subscription</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="tools">
+                <div class="row">
+                    <div class="col-md-3 col-sm-3 col-xs-6">
+                        <div class="styled-select">
+                            <select name="sort_rating" id="sort_rating">
+                                <option value="" selected>Sort by ranking</option>
+                                <option value="lower">Lowest ranking</option>
+                                <option value="higher">Highest ranking</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-9 hidden-xs">
+
+                    </div>
+                </div>
+            </div><!--End tools -->
+            <div class="row">
+                @foreach (Subscription s in Model)
+                {
+                    var url = s.id + ".jpg";
+                    if (s.name == "Chef Choice")
+                     {
+                         <div class="col-md-4 col-sm-4 wow zoomIn" data-wow-delay="0.1s">
+                             <a class="strip_list grid" href="@Url.Action("Detail", "Subscribe", new {Id = s.id})">
+                                 <!--Reccomend sub type-->
+                                 <div class="ribbon_1">Popular</div>
+                                 <div class="desc">
+                                     <div class="thumb_strip">
+                                         <img width="250" height="250" src="~/Content/img/subscribe/@url" alt="">
+                                     </div>
+                                     <h3>@s.name</h3>
+                                     <div class="location">
+                                         @s.description
+                                     </div>
+                                 </div>
+                             </a>
+                         </div>
+                    }
+                    else if (s.name == "Calorie-Conscious")
+                    {
+                        <div class="col-md-4 col-sm-4 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="strip_list grid" href="@Url.Action("Detail", "Subscribe", new {Id = s.id})">
+                                <!--Reccomend sub type-->
+                                <div class="ribbon_table"></div>
+                                <div class="desc">
+                                    <div class="thumb_strip">
+                                        <img width="250" height="250" src="~/Content/img/subscribe/@url" alt="">
+                                    </div>
+                                    <h3>@s.name</h3>
+                                    <div class="location">
+                                        @s.description
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-md-4 col-sm-4 wow zoomIn" data-wow-delay="0.1s">
+                            <a class="strip_list grid" href="@Url.Action("Detail", "Subscribe", new {Id = s.id})">
+                                <div class="desc">
+                                    <div class="thumb_strip">
+                                        <img width="250" height="250" src="~/Content/img/subscribe/@url" alt="">
+                                    </div>
+                                    <h3>@s.name</h3>
+                                    <div class="location">
+                                        @s.description
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+            </div>
+
+
+            <!-- End row-->
+
+        </div><!-- End col-md-9-->
+
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End container -->
+<!-- End Content =============================================== -->

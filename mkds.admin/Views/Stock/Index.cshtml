@@ -1,0 +1,191 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">Stock Table</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                            <th width=%5>
+                                ID
+                            </th>
+                            <th width=%15>
+                                Ingredient
+                            </th>
+                            <th width=20%>
+                                Amount
+                            </th>
+                            <th width=30%>
+                                Supplier
+                            </th>
+                            <th width=30%>
+                                Warehouse
+                            </th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Shrimp</td>
+                                    <td>500 kg</td>
+                                    <td>IFFO-The marine ingredients Organisation</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+
+                                <tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Oyster</td>
+                                    <td>1000</td>
+                                    <td>IFFO-The marine ingredients Organisation</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Tomato</td>
+                                    <td>500 kg</td>
+                                    <td>The Garden Basket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Potato</td>
+                                    <td>500 kg</td>
+                                    <td>The Garden Basket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Union</td>
+                                    <td>600 kg</td>
+                                    <td>The Garden Basket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Mushroom</td>
+                                    <td>300 kg</td>
+                                    <td>The Garden Basket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Carrot</td>
+                                    <td>200 kg</td>
+                                    <td>The Garden Basket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Mozzarella</td>
+                                    <td>300 kg</td>
+                                    <td>Makro Supermarket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Olive</td>
+                                    <td>300 kg</td>
+                                    <td>Makro Supermarket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>Egg</td>
+                                    <td>2500</td>
+                                    <td>Makro Supermarket</td>
+                                    <td>Quick Food Warehouse</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Edit Stock</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <select class="form-control" id="sel1">
+                                        <option>Add</option>
+                                        <option>Edit</option>
+                                        <option>Delete</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <form class="navbar-form">
+                                    <div class="input-group no-border">
+                                        <input type="text" value="" class="form-control" placeholder="Search...">
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Amount</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Supplier</label>
+                                    <input type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Warehouse</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Save Stock</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,368 @@
+﻿@using mkds.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "Subscription Customize";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Subscription sub = Model;
+}
+<link href="~/Content/css/smart_cart.css" rel="stylesheet">
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Subscribe")">Subscription</a></li>
+            <li>Customize</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+
+        <div class="col-md-3">
+            <p><a href="@Url.Action("Index","Subscribe")" class="btn_side">Back to subscription types</a></p>
+            <div class="box_style_1">
+                <ul id="cat_nav">
+                    <li><a href="#monday" class="active">Monday </a></li>
+                    <li><a href="#tuesday" class="active">Tuesday</a></li>
+                    <li><a href="#wednesday" class="active">Wednesday </a></li>
+                    <li><a href="#thursday" class="active">Thursday </a></li>
+                    <li><a href="#friday" class="active">Friday </a> </li>
+                    <li><a href="#saturday" class="active">Saturday </a></li>
+                    <li><a href="#sunday" class="active">Sunday</a></li>
+                </ul>
+            </div><!-- End box_style_1 -->
+
+
+        </div><!-- End col-md-3 -->
+
+        <div class="col-md-6">
+            <div class="box_style_2" id="main_menu">
+                <h2 class="inner">@sub.name Menu</h2>
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="monday">Monday </h3>
+                        @Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Monday" }, { "Price", sub.price } })
+                    </div>
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+
+                                foreach (Recipe recipe in sub.monday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 class="nomargin_top" data-name="product_name" id="tuesday">Tuesday</h3>
+                        @Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Tuesday" }, { "Price", sub.price } })
+                    </div>
+
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.tuesday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="wednesday">Wednesday</h3>
+                        @Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Wednesday" }, { "Price", sub.price } })
+                    </div>
+
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.wednesday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="thursday">Thursday</h3> @Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Thursday" }, { "Price", sub.price } })
+                    </div>
+
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.thursday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="friday">Friday</h3>@Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Friday" }, { "Price", sub.price } })
+                    </div>
+
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.friday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="saturday">Saturday</h3>@Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Saturday" }, { "Price", sub.price } })
+                    </div>
+
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.saturday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <hr />
+                <div class="sc-product-item">
+                    <div>
+                        <h3 data-name="product_name" class="nomargin_top" id="sunday">Sunday</h3>@Html.Partial("_AddCart", new ViewDataDictionary { { "Day", "Sunday" }, { "Price", sub.price } })
+                    </div>
+                    <table class="table table-striped cart-list">
+                        <thead>
+                            <tr>
+                                <th>Meal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (Recipe recipe in sub.sunday_meal.recipe)
+                                {
+                                    <tr>
+                                        <td>
+
+                                            <figure class="thumb_menu_list"><img data-name="product_image" src="~/Content/img/recipes/@recipe.url" alt="thumb"></figure>
+                                            <h5>@recipe.name</h5>
+                                            <p>
+                                                @recipe.description
+                                            </p>
+
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div><!-- End box_style_1 -->
+        </div><!-- End col-md-6 -->
+
+        <div class="col-md-3" id="sidebar">
+            <form action="@Url.Action("BeforeCheckout","Subscribe")" method="POST">
+
+                <div id="smartcart"></div>
+
+            </form>
+            @*<div class="theiaStickySidebar">
+                    <div id="cart_box">
+                        <h3>Your subscription <i class="icon_cart_alt pull-right"></i></h3>
+                        <table class="table table_summary">
+                            <tbody id="cart_table">
+
+                            </tbody>
+                        </table>
+
+                        <table class="table table_summary">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Subtotal <span class="pull-right" id="sub_total"> - </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Delivery fee <span class="pull-right"> 0₺ </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="total">
+                                        TOTAL <span class="pull-right">$66</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                        <a class="btn_full" id="subscribe" >Subscribe now</a>
+                    </div><!-- End cart_box -->
+                </div><!-- End theiaStickySidebar -->*@
+        </div><!-- End col-md-3 -->
+
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+
+@section scripts {
+    @*<script type="text/javascript">
+
+
+            var base_price = 50;
+            var cart = new Array();
+            function addView(day,amount) {
+                var part1 =
+                    "<tr> <td><a href='#0' class='remove_item'><i class='icon_minus_alt'></i></a> <strong>"+amount+"</strong>";
+                var part2 = "</td><td> <strong class='pull-right'>";
+                var part3 = "₺</strong</td></tr>";
+
+                var total = part1 + day + part2 + (base_price*amount) + part3;
+                $( "#cart_table" ).append(total);
+            }
+
+            $('.add_to_basket').click(function () {
+                var selected_day = $(this).val();
+                var id = "#number_of_services_" + selected_day;
+                var service_amount = $(id).val();
+                console.log("day : " + selected_day + " , Service : " + service_amount);
+                var item = {day:selected_day,amount:service_amount}
+                cart.push(item);
+                addView(selected_day,service_amount);
+            });
+
+            $('#subscribe').click(function () {
+                $.ajax({
+                    type: 'Post',
+                    url: '@Url.Action("BeforeCheckout","Subscribe")',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8',
+                    data: JSON.stringify({ cart: cart }),
+
+                });
+            });
+            $('#delete_row').click(function() {
+
+            });
+
+        </script>*@
+
+
+    <script src="~/Scripts/js/jquery.smartCart.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Initialize Smart Cart
+            $('#smartcart').smartCart();
+        });
+    </script>
+
+}

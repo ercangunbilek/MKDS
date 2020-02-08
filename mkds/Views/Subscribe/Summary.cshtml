@@ -1,0 +1,177 @@
+﻿@using mkds.Models
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Customized_Subscription customizedSubscription = Model;
+    double total = 0;
+    double subtotal = 0;
+    ViewBag.Title = "Summary";
+}
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Subscribe")">Subscription</a></li>
+            <li>Summary</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <div class="box_style_2">
+                <h2 class="inner">Subscription confirmed!</h2>
+                <div id="confirm">
+                    <i class="icon_check_alt2"></i>
+                    <h3>Thank you!</h3>
+                </div>
+                <h4>Summary</h4>
+                <table class="table table-striped nomargin">
+                    <tbody>
+                    @{
+                       
+                        if (customizedSubscription.monday > 0)
+                        {
+                            subtotal = customizedSubscription.monday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.monday</strong>x Monday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+                   
+                    }
+                    @{
+                        
+                        if (customizedSubscription.tuesday > 0)
+                        {
+                            subtotal = customizedSubscription.tuesday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.tuesday</strong>x Tuesday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    @{
+                        
+                        if (customizedSubscription.wednesday > 0)
+                        {
+                            subtotal = customizedSubscription.wednesday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.wednesday</strong>x Wednesday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    @{
+                        
+                        if (customizedSubscription.thursday > 0)
+                        {
+                            subtotal = customizedSubscription.thursday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.thursday</strong>x Thursday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    @{
+                       
+                        if (customizedSubscription.friday > 0)
+                        {
+                            subtotal = customizedSubscription.friday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.friday</strong>x Friday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    @{
+                
+                        if (customizedSubscription.saturday > 0)
+                        {
+                            subtotal = customizedSubscription.saturday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.saturday</strong>x Saturday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    @{
+                    
+                        if (customizedSubscription.sunday > 0)
+                        {
+                            subtotal = customizedSubscription.sunday*customizedSubscription.subscription.price;
+                            total += subtotal;
+                            <tr>
+                                <td>
+                                    <strong>@customizedSubscription.sunday</strong>x Sunday
+                                </td>
+                                <td>
+                                    <strong class="pull-right">$@subtotal</strong>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                    
+                    <tr>
+                        <td>
+                            Delivery schedule <a href="#" class="tooltip-1" data-placement="top" title="" data-original-title="Please consider 30 minutes of margin for the delivery!"><i class="icon_question_alt"></i></a>
+                        </td>
+                        <td>
+                            <strong class="pull-right">@customizedSubscription.schedule_time</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="total_confirm">
+                            TOTAL
+                        </td>
+                        <td class="total_confirm">
+                            <span class="pull-right">$@total</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->

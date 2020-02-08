@@ -1,0 +1,153 @@
+﻿@using mkds.Models
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ShopCartItem> shopCartItems = Model;
+    double total = 0;
+    ViewBag.Title = "Before Checkout";
+}
+<link href="~/Content/css/smart_cart.css" rel="stylesheet">
+
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Subscribe")">Subscription</a></li>
+            <li><a href="@Url.Action("Detail","Subscribe")">Customize Subscription</a></li>
+            <li>Before Checkout</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="box_style_2 hidden-xs info">
+                <h4 class="nomargin_top">Delivery time <i class="icon_clock_alt pull-right"></i></h4>
+                <p>
+                    Delays in the delivery of the shipment can occur due to external factors such as weather and traffic conditions. If you are experiencing a longer delay in the delivery of your parcel, please contact us.
+                </p>
+                <hr>
+                <h4>Secure payment <i class="icon_creditcard pull-right"></i></h4>
+                <p>
+                    With “3D Secure,” Visa and Mastercard consolidated online payments. When you make a payment online, you will be asked for a 3D Secure code to verify that you are the cardholder and protect yourself in the event of bank details stolen.
+                </p>
+            </div><!-- End box_style_1 -->
+
+
+
+        </div><!-- End col-md-3 -->
+
+        <div class="col-md-6">
+            <div class="box_style_2" id="order_process">
+                <h2 class="inner">Your delivery details</h2>
+                <form id="user_data" method="POST" action="@Url.Action("Checkout","Subscribe")">
+                    <div class="form-group">
+                        <label>Select your address</label>
+                        <select class="form-control" required name="address" id="address">
+                            <option value="1" selected>Home</option>
+                            <option value="2">Work</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <a href="@Url.Action("Profile","User")">Add New Address</a>
+                    </div>
+                    <hr>
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Delivery time</label>
+                                <select class="form-control" required name="schedule_time" id="schedule_time">
+                                    <option value="" selected>Select time</option>
+                                    <option value="11.30am">11.30am</option>
+                                    <option value="11.45am">11.45am</option>
+                                    <option value="12.15am">12.15am</option>
+                                    <option value="12.30am">12.30am</option>
+                                    <option value="12.45am">12.45am</option>
+                                    <option value="01.00pm">01.00pm</option>
+                                    <option value="01.15pm">01.15pm</option>
+                                    <option value="01.30pm">01.30pm</option>
+                                    <option value="01.45pm">01.45pm</option>
+                                    <option value="02.00pm">02.00pm</option>
+                                    <option value="07.00pm">07.00pm</option>
+                                    <option value="07.15pm">07.15pm</option>
+                                    <option value="07.30pm">07.30pm</option>
+                                    <option value="07.45pm">07.45pm</option>
+                                    <option value="08.00pm">08.00pm</option>
+                                    <option value="08.15pm">08.15pm</option>
+                                    <option value="08.30pm">08.30pm</option>
+                                    <option value="08.45pm">08.45pm</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Notes</label>
+                            <textarea class="form-control" style="height:150px" placeholder="Ex. Allergies,..." name="note" id="note"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- End box_style_1 -->
+        </div><!-- End col-md-6 -->
+
+        <div class="col-md-3" id="sidebar">
+            <div class="list-group sc-cart-item-list">
+                
+                @foreach (ShopCartItem item in shopCartItems)
+                {
+
+                    double subtTotal = Convert.ToDouble(item.product_price) * Convert.ToDouble(item.product_quantity);
+                    total += subtTotal;
+                    <div class="sc-cart-item list-group-item" data-unique-key="1577213739306">
+                        <h4 class="list-group-item-heading">@item.product_name</h4><p class="list-group-item-text"></p>
+                        <div class="sc-cart-item-summary">
+                            <span class="sc-cart-item-price">$@item.product_price</span>
+                            × <span class="sc-cart-item-price">@item.product_quantity</span> = 
+                              <span class="sc-cart-item-amount">$@subtTotal</span></div>
+                    </div>
+                }
+                
+                <div class="panel-footer sc-toolbar">
+                    <div class="sc-cart-summary">
+                        <div class="sc-cart-summary-subtotal">Total <span class="sc-cart-subtotal">$@total</span>
+                        </div>
+                    </div>
+                    <div class="sc-cart-toolbar">
+                        <form id="checkout" action="@Url.Action("Checkout","Subscribe")">
+                        <button class="btn btn-info sc-cart-checkout" type="submit">Checkout</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End col-md-3 -->
+
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+
+@section scripts{
+    <script>
+        $("#checkout").submit(function(e) {
+
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+
+            var form = $('#user_data');
+            var url = form.attr('action');
+            form.submit();
+            //$.ajax({
+            //    type: "POST",
+            //    url: url,
+            //    data: form.serialize() // serializes the form's elements.
+            //});
+
+
+        });
+    </script>
+}

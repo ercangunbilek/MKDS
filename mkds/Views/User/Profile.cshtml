@@ -1,0 +1,343 @@
+﻿@using mkds.Models
+@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    User user = Session["User"] as User;
+    Customized_Subscription customizedSubscription = Session["customized_subscription"] as Customized_Subscription;
+    ViewBag.Title = "Profile";
+    Payment payment = Session["payment"] as Payment;
+    string name = "";
+    if (customizedSubscription != null)
+    {
+        name = customizedSubscription.subscription.name;
+
+    }
+}
+
+<div class="container margin_60_35">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="box_style_2">
+                <div align="middle"><img src="~/Content/img/avatar1.jpg" alt="" class="img-circle"></div>
+
+                <div class="review_strip_single">
+
+
+                    <h4>@user.name</h4>
+
+
+                    <!-- End row -->
+                </div>
+                <div>
+
+
+                    <div class="box_style_1">
+
+                        <ul id="cat_nav">
+                            <li>
+                                <a href="#menu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Subscription</a>
+                            </li>
+
+                            <li>
+                                <a href="#payments" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" class="dropdown-toggle">Payments</a>
+                            </li>
+
+                            <li>
+                                <a href="#address" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" class="dropdown-toggle">Address</a>
+                            </li>
+
+                        </ul>
+                    </div><!-- End box_style_1 -->
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-12" data-toggle="dropdown" id="menu">
+                    <div class="box_style_2">
+                        <h2 class="inner">
+                            Active Subscription(@name)
+                        </h2>
+
+                        <table class="table table-striped cart-list">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Day
+                                    </th>
+                                    <th>
+                                        Quantity
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (customizedSubscription != null && payment!= null)
+                                    {
+
+                                        if (customizedSubscription.monday != 0)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    Monday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.monday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+
+                                        if (customizedSubscription.tuesday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Tuesday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.tuesday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                        if (customizedSubscription.wednesday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Wednesday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.wednesday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                        if (customizedSubscription.thursday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Thursday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.thursday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                        if (customizedSubscription.friday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Friday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.monday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                        if (customizedSubscription.saturday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Saturday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.monday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+
+                                        if (customizedSubscription.sunday != 0)
+                                        {
+                                            <tr>
+
+                                                <td>
+                                                    Sunday
+                                                </td>
+                                                <td>
+                                                    <strong>@customizedSubscription.monday</strong>
+                                                </td>
+
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div><!-- End box_style_1 -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" data-toggle="dropdown" id="payments">
+                    <div class="box_style_2">
+                        <h2 class="inner">Payments</h2>
+                        <h3 class="nomargin_top">Payment List</h3>
+
+                        <table class="table table-striped cart-list">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Subscription Type
+                                    </th>
+                                    <th>
+                                        Price
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (payment != null)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @payment.date
+                                            </td>
+                                            <td>
+                                                @customizedSubscription.subscription.name
+                                            </td>
+                                            <td>
+                                                <strong>$@customizedSubscription.total_price</strong>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+
+
+
+                    </div><!-- End box_style_1 -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" data-toggle="dropdown" id="address">
+                    <div class="box_style_2">
+                        <h2 class="inner">Address</h2>
+                        <h3 class="nomargin_top">Address List</h3>
+
+                        <table class="table table-striped cart-list">
+                            <thead>
+                                <tr></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+
+                                        <h5>Home</h5>
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a data-toggle="collapse" href="#collapse1">7018 Sokak No:23 D:8</a>
+
+
+                                                </div>
+                                                <div id="collapse1" class="panel-collapse collapse">
+                                                    <div class="box_style_2" id="order_process">
+
+
+                                                        <div class="form-group">
+                                                            <label>Your full address</label>
+                                                            <input type="text" id="address_order" name="address_order" class="form-control" placeholder=" Your full address">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label>City</label>
+                                                                    <input type="text" id="city_order" name="city_order" class="form-control" placeholder="Your city">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label>Postal code</label>
+                                                                    <input type="text" id="pcode_oder" name="pcode_oder" class="form-control" placeholder=" Your postal code">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                        <h5>Work</h5>
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <a data-toggle="collapse" href="#collapse2">66 Sokak No:2 D:18</a>
+
+                                                </div>
+                                                <div id="collapse2" class="panel-collapse collapse">
+                                                    <div class="box_style_2" id="order_process">
+
+
+                                                        <div class="form-group">
+                                                            <label>Your full address</label>
+                                                            <input type="text" id="address_order" name="address_order" class="form-control" placeholder=" Your full address">
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label>City</label>
+                                                                    <input type="text" id="city_order" name="city_order" class="form-control" placeholder="Your city">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label>Postal code</label>
+                                                                    <input type="text" id="pcode_oder" name="pcode_oder" class="form-control" placeholder=" Your postal code">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+
+
+                    </div><!-- End box_style_1 -->
+                </div>
+            </div>
+        </div>
+
+    </div><!-- End row -->
+</div>

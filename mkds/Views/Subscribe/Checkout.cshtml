@@ -1,0 +1,181 @@
+﻿@using mkds.Models
+@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<ShopCartItem> shopCartItems = Model;
+    double total = 0;
+    ViewBag.Title = "Checkout";
+}
+<link href="~/Content/css/smart_cart.css" rel="stylesheet">
+<div id="position">
+    <div class="container">
+        <ul>
+            <li><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Index","Subscribe")">Subscription</a></li>
+            <li><a href="@Url.Action("Detail","Subscribe")">Customize Subscription</a></li>
+            <li><a href="@Url.Action("Detail","Subscribe")">Before Checkout</a></li>
+            <li>Checkout</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="box_style_2 hidden-xs info">
+                <h4 class="nomargin_top">Delivery time <i class="icon_clock_alt pull-right"></i></h4>
+                <p>
+                    Delays in the delivery of the shipment can occur due to external factors such as weather and traffic conditions. If you are experiencing a longer delay in the delivery of your parcel, please contact us.
+                </p>
+                <hr>
+                <h4>Secure payment <i class="icon_creditcard pull-right"></i></h4>
+                <p>
+                    With “3D Secure,” Visa and Mastercard consolidated online payments. When you make a payment online, you will be asked for a 3D Secure code to verify that you are the cardholder and protect yourself in the event of bank details stolen.
+                </p>
+            </div><!-- End box_style_2 -->
+
+
+        </div><!-- End col-md-3 -->
+
+        <div class="col-md-6">
+            <div class="box_style_2">
+                <h2 class="inner">Payment methods</h2>
+                <div class="payment_select">
+                    <label><input type="radio" value="" checked name="payment_method" checked class="icheck">Credit card</label>
+                    <i class="icon_creditcard"></i>
+                </div>
+                <form method="post" id="user_data" action="@Url.Action("Summary","Subscribe")">
+                    <div class="form-group">
+                        <label>Name on card</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="First and last name">
+                    </div>
+                    <div class="form-group">
+                        <label>Card number</label>
+                        <input type="text" id="card_number" name="card_number" class="form-control" placeholder="Card number">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Expiration date</label>
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="mm">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="yyyy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Security code</label>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="form-group">
+                                            <input type="text" id="ccv" name="ccv" class="form-control" placeholder="CCV">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 col-sm-6">
+                                        <img src="~/Content/img/icon_ccv.gif" width="50" height="29" alt="ccv"><small>Last 3 digits</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!--End row -->
+                <div class="payment_select">
+                    <label><input type="radio" value="" name="payment_method" class="icheck">Sodexo</label>
+                    <i class="icon_creditcard"></i>
+                </div>
+
+                <div class="form-group">
+                    <label>Name on card</label>
+                    <input type="text" class="form-control" id="name_card_order" name="name_card_order" placeholder="First and last name">
+                </div>
+                <div class="form-group">
+                    <label>Card number</label>
+                    <input type="text" id="card_number" name="card_number" class="form-control" placeholder="Card number">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Expiration date</label>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" id="expire_month" name="expire_month" class="form-control" placeholder="mm">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <input type="text" id="expire_year" name="expire_year" class="form-control" placeholder="yyyy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div><!-- End box_style_1 -->
+
+        </div><!-- End col-md-6 -->
+
+
+
+        <div class="col-md-3" id="sidebar">
+            <div class="list-group sc-cart-item-list">
+
+                @foreach (ShopCartItem item in shopCartItems)
+                {
+
+                    double subtTotal = Convert.ToDouble(item.product_price) * Convert.ToDouble(item.product_quantity);
+                    total += subtTotal;
+                    <div class="sc-cart-item list-group-item" data-unique-key="1577213739306">
+                        <h4 class="list-group-item-heading">@item.product_name</h4><p class="list-group-item-text"></p>
+                        <div class="sc-cart-item-summary">
+                            <span class="sc-cart-item-price">$@item.product_price</span>
+                            × <span class="sc-cart-item-price">@item.product_quantity</span> =
+                            <span class="sc-cart-item-amount">$@subtTotal</span>
+                        </div>
+                    </div>
+                }
+
+                <div class="panel-footer sc-toolbar">
+                    <div class="sc-cart-summary">
+                        <div class="sc-cart-summary-subtotal">
+                            Total <span class="sc-cart-subtotal">$@total</span>
+                        </div>
+                    </div>
+                    <div class="sc-cart-toolbar">
+                        <form id="checkout" action="@Url.Action("Checkout","Subscribe")">
+                            <button class="btn btn-info sc-cart-checkout" type="submit">Complete Payment</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End col-md-3 -->
+
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+@section scripts{
+    <script>
+        $("#checkout").submit(function(e) {
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+            var form = $('#user_data');
+            var url = form.attr('action');
+            form.submit();
+            //$.ajax({
+            //    type: "POST",
+            //    url: url,
+            //    data: form.serialize() // serializes the form's elements.
+            //});
+        });
+    </script>
+}

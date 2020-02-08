@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewBag.Title = "SubscribeManagement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title mt-0"> Subscriptions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                            <th>ID</th>
+                            <th>Subscription Name</th>
+                            <th>Price</th>
+                            <th>Sunday Menu</th>
+                            <th>Monday Menu</th>
+                            <th>Tuesday Menu</th>
+                            <th>Wednesday Menu</th>
+                            <th>Thursday Menu</th>
+                            <th>Friday Menu</th>
+                            <th>Saturday Menu</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Chef's Choocie</td>
+                                    <td>$56,738</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                    <td>Meal Menu 5</td>
+                                    <td>Meal Menu 3</td>
+                                    <td>Meal Menu 4</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Low calory</td>
+                                    <td>$33,789</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                    <td>Meal Menu 5</td>
+                                    <td>Meal Menu 3</td>
+                                    <td>Meal Menu 4</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Vegeterian</td>
+                                    <td>$36,142</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                    <td>Meal Menu 5</td>
+                                    <td>Meal Menu 3</td>
+                                    <td>Meal Menu 4</td>
+                                    <td>Meal Menu 1</td>
+                                    <td>Meal Menu 2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Edit Subscription</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Subscription Name</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Price</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group form-file-upload form-file-multiple">
+                                    <input type="file" multiple="" class="inputFileHidden">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control inputFileVisible" placeholder="Multiple Files" multiple>
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-fab btn-round btn-info">
+                                                <i class="material-icons">layers</i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit" class="btn btn-primary pull-right">Update Subscription</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title">Edit Subscription Daily Menu</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Sunday</label>
+                                    <select class="form-control" id="sunday">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Monday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Tuesday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Wednesday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Thursday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Friday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 offset-md-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Saturday</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Meal Menu 1</option>
+                                        <option>Meal Menu 2</option>
+                                        <option>Meal Menu 3</option>
+                                        <option>Meal Menu 4</option>
+                                        <option>Meal Menu 5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

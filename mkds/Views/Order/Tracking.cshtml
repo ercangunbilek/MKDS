@@ -1,0 +1,83 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Order Tracking";
+}
+@*add js file map_listingjs*@
+<div class="container-fluid full-height">
+    <div class="row row-height">
+        <div class="col-lg-7 col-md-6 content-left">
+            <div id="filters_map"></div>           
+            <div class="strip_list last">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                        <div class="desc">
+                            <div class="thumb_strip">
+                                <img src="~/Content/img/deliver_man.png" alt="">
+                            </div>
+							
+                            <h3>ORDER ID:053001523</h3>
+                            <div class="type">
+                                Sea Food
+                            </div>
+                            <div class="location">
+                                Kazımdirik, Bornova Metro İstasyonu, 35100 Bornova/İzmir
+                            </div>
+                            <ul>							
+                                <li>On Road<i class="icon_check_alt2 ok"></i></li>
+                                <li><span>Esimated Delivery Time : </span>10 min</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="go_to">
+                            <div>	
+                                <a onclick="onHtmlClick('MyAddress', 0)" class="btn_1">Go Home</a>							
+                                <a onclick="onHtmlClick('Carrier', 0)" class="btn_1">View on Map</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End row-->
+            </div><!-- End strip_list-->
+          
+        </div>
+        <!-- End content-left-->
+
+        <div class=" col-lg-5 col-md-6 map-right">
+            <div id="map_listing"></div>
+            <!-- map-->
+        </div>
+
+    </div>
+    <!-- End row-->
+</div>
+<!-- End container-fluid -->
+
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+
+@section scripts
+{
+    <script src="~/Scripts/js/map_listing.js"></script>
+    <script src="~/Scripts/js/infobox.js"></script>
+    <script src="~/Scripts/js/ion.rangeSlider.js"></script>
+    <script>
+        $(function () {
+            'use strict';
+            $("#range").ionRangeSlider({
+                hide_min_max: true,
+                keyboard: true,
+                min: 0,
+                max: 15,
+                from: 0,
+                to:5,
+                type: 'double',
+                step: 1,
+                prefix: "Km ",
+                grid: true
+            });
+        });
+    </script>
+
+
+}
